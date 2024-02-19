@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Backgrounds */
+@layer utilities {
+    .bg-up-maroon-lightest {
+        background-color: rgba(161, 24, 63, 0.116);
+    }
+    .bg-up-maroon-lighter {
+        background-color: #a1183f;
+    }
+
+    .bg-up-maroon-darker {
+        background-color: rgb(92, 14, 35);
+    }
+    
+    .bg-up-maroon {
+        background-color: #8D1436;
+    }
+
+    .border-up-maroon-lighter {
+        border-color: #cc1e50;
+    }
+    .bg-up-green-lighter {
+        background-color: #ceebe3;
+    }
+    .bg-up-green-light {
+        background-color: #008d67;
+    }
+    .bg-up-green {
+        background-color: #00563F;
+    }
+
+    .bg-up-green-darker {
+        background-color: #00412f;
+    }
+
+    .text-up-maroon-darker {
+        color: rgb(92, 14, 35);
+    }
+    
+    .mx--1 {
+        margin-left: -5px;
+    }
+    
+    .mx--2 {
+        margin-left: -7px;
+    }
+}
+
+
+
+.bg-up-yellow {
+    background-color: #FFB71C;
+}
+
+.bg-oblation {
+    background-image: url('../js/images/oblation.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.bg-oblation-header {
+    background-image: url('../js/images/up-header.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: left;
+}
+
+.bg-triangle-overlay {
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: 0;
+    right: 50%;
+    border-style: solid;
+    border-width: 0 0 1080px 200px;
+    border-color: transparent transparent #8d1436 transparent;
+}
+
+/* Font Colors */
+.text-up-maroon {
+    color: #8D1436;
+}
+
+.text-up-green {
+    color: #00563F;
+}
+
+.text-up-yellow {
+    color: #FFB71C;
+}
+
+/* Borders */
+.border-up-green {
+    border-color: #00563F;
+}
+
+.border-up-maroon {
+    border-color: #8D1436;
+}
+
+/* Sizes */
+.logo-size {
+    width: 80px;
+    height: 73px;
+}
+
+.admin-logo-size {
+    width: 100px;
+    height: 93px;
+}
+
+.min-tbl-h {
+    height: 38rem;
+}
