@@ -23,14 +23,16 @@ class ResearchIdRequest extends FormRequest
     {
         return [
             'code' => 'required',
-            'office_id' => 'required'
+            'office_id' => 'required',
+            'client_id' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
-            'office_id.required' => 'The section field is required.'
+            'office_id.required' => 'The section field is required.',
+            'client_id.required' => 'The client field is required.'
         ];
     }
 }

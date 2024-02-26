@@ -23,9 +23,11 @@ class ResearchIdController extends Controller
     public function index()
     {
         $offices = Office::all();
+        $clients = User::where('role', User::ROLE_CLIENT)->where('status', User::STATUS_ACTIVE)->get();
 
         return Inertia::render('Admin/Research', [
-            'offices' => $offices
+            'offices' => $offices,
+            'clients' => $clients
         ]);
     }
 
@@ -89,7 +91,9 @@ class ResearchIdController extends Controller
     {
         $researchId = ResearchId::create([
             'research_code' => $request->code,
-            'office_id' => $request->office_id
+            'office_id' => $request->office_id,
+            'client_id' => $request->client_id,
+            'status' => ResearchId::STATUS_ACTIVE // default
         ]);
 
         ActivityLog::create([
@@ -151,6 +155,18 @@ class ResearchIdController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    /**
+     * Toggle status of the specified resource from storage.
+     */
+    public function toggle($id)
+    {
+        $research = ResearchId::findOrFail($id);
+        $research->status = !$research->status;
+        $research->save();
+
+        return response()->json(['message' => 'Status updated successfully.']);
     }
 
 }

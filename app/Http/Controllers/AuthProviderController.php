@@ -65,10 +65,10 @@ class AuthProviderController extends Controller
 
         $googleUser = Socialite::driver('google')->user();
 
-        if (!str_contains($googleUser->email, 'up.edu.ph')) {
-            session(['status' => 'Please use your UP email to login.']);
-            return redirect()->route('login');
-        }
+        // if (!str_contains($googleUser->email, 'up.edu.ph')) {
+        //     session(['status' => 'Please use your UP email to login.']);
+        //     return redirect()->route('login');
+        // }
 
         $user = User::where('google_id', $googleUser->id)->first();
 

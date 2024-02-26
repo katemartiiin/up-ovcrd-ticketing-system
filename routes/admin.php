@@ -36,6 +36,7 @@ Route::middleware(['auth:admin', 'verified'])->group(function() {
         Route::post('/fetch', 'fetch')->name('fetch');
         Route::post('/store', 'store')->name('store');
         Route::post('/{id}/update', 'update')->name('update');
+        Route::patch('/{id}/toggle', 'toggle')->name('toggle');
     });
 
     /* Office Management Routes */

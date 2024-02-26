@@ -21,14 +21,15 @@ export default {
         Pagination,
         AuthenticatedLayout
     },
-    props: ['offices'],
+    props: ['offices', 'clients'],
     setup() {
-        const { fetch, store, errors, update, fetchStaffs, fetchAvailable } = useResearch()
+        const { fetch, store, errors, toggle, update, fetchStaffs, fetchAvailable } = useResearch()
 
         const headers = ref([
             { text: '#', value: 'index' },
             { text: 'Code', value: 'research_code' },
             { text: 'Section', value: 'officeCode' },
+            { text: 'Client', value: 'clientName' },
             { text: '# of Staff', value: 'staffCount' },
             { text: 'Action', value: 'action' }
         ])
@@ -47,7 +48,8 @@ export default {
 
         const initialPayload = {
             code: '',
-            office_id: ''
+            office_id: '',
+            client_id: '',
         }
 
         const payload = reactive({...initialPayload})
@@ -105,6 +107,11 @@ export default {
             fetchResearch()
         }
 
+        const toggleStatus = async (id) => {
+            await toggle(id)
+            fetchResearch()
+        }
+
         const updateStaff = async (fx, id) => {
             payloadStaffs.function = fx
             payloadStaffs.research_id = selectedResearch.value.id
@@ -131,6 +138,7 @@ export default {
             toggleStaff,
             researchIds,
             pageOptions,
+            toggleStatus,
             toggleCreate,
             payloadStaffs,
             fetchResearch,
@@ -162,9 +170,16 @@ export default {
                     </div>
                     <div class="w-full py-5 px-7">
                         <div class="w-full flex grid grid-cols-1 md:grid-cols-2 gap-2 mt-2 mb-7">
-                            <div>
+                            <div class="col-span-2 mb-2">
                                 <input v-model="payload.code" type="text" class="w-full p-2 rounded-md bg-gray-50 border border-gray-200 text-sm" placeholder="Research Code" />
                                 <ErrorText v-if="errors.code" :message="errors.code[0]" />
+                            </div>
+                            <div>
+                                <select v-model="payload.client_id" id="countries" class="bg-gray-50 border border-gray-300 text-sm text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2">
+                                <option selected value="">Select client</option>
+                                    <option v-for="client in clients" :key="client.id" :value="client.id">{{ client.name }}</option>
+                                </select>
+                                <ErrorText v-if="errors.client_id" :message="errors.client_id[0]" />
                             </div>
                             <div>
                                 <select v-model="payload.office_id" id="countries" class="bg-gray-50 border border-gray-300 text-sm text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2">
@@ -250,7 +265,12 @@ export default {
                                 <div v-if="header['value'] != 'action' && header['value'] != 'index'" class="w-1/2 bg-white text-up-maroon p-2 border-b border-up-maroon font-semibold">{{ item[header['value']] }}</div>
                                 <div v-else-if="header['value'] == 'index'" class="w-1/2 bg-white text-up-maroon p-2 border-b border-up-maroon font-semibold">{{ (index + 1) }}</div>
                                 <div v-else class="w-1/2 bg-white p-2">
-                                    <button @click="toggleStaff(item)" type="button" class="bg-up-green text-white py-1 px-2 text-xs rounded-md">Manage Staff</button>
+                                    <button @click="toggleStatus(item.id)" type="button" class="mr-1">
+                                        <span class="py-1 px-2 rounded-sm border" :class="item.status == 1 ? 'text-green-700 border-green-500 bg-green-300 hover:bg-green-400 hover:text-green-800' : 'text-red-700 border-red-500 bg-red-300 hover:bg-red-400 hover:text-red-800'">
+                                            <font-awesome-icon :icon="item.status == 1 ? 'fa-solid fa-lock-open' : 'fa-solid fa-lock'"></font-awesome-icon>
+                                        </span>
+                                    </button>
+                                    <button @click="toggleStaff(item)" type="button" class="bg-up-green text-white py-1 px-2 text-sm rounded-sm">Manage Staff</button>
                                 </div>
                             </template>
                         </div>
@@ -278,7 +298,12 @@ export default {
                                         <span v-if="header['value'] != 'action' && header['value'] != 'index'" >{{ item[header['value']] }}</span>
                                         <span v-else-if="header['value'] == 'index'" >{{ (index + 1) }}</span>
                                         <div v-else class="w-full flex flex-wrap">
-                                            <button @click="toggleStaff(item)" type="button" class="bg-up-green text-white py-1 px-2 text-xs rounded-md">Manage Staff</button>
+                                            <button @click="toggleStatus(item.id)" type="button" class="mr-1">
+                                                <span class="py-1 px-2 rounded-sm border" :class="item.status == 1 ? 'text-green-700 border-green-500 bg-green-300 hover:bg-green-400 hover:text-green-800' : 'text-red-700 border-red-500 bg-red-300 hover:bg-red-400 hover:text-red-800'">
+                                                    <font-awesome-icon :icon="item.status == 1 ? 'fa-solid fa-lock-open' : 'fa-solid fa-lock'"></font-awesome-icon>
+                                                </span>
+                                            </button>
+                                            <button @click="toggleStaff(item)" type="button" class="bg-up-green text-white py-1 px-2 text-sm rounded-sm">Manage Staff</button>
                                         </div>
                                     </template>
                                 </div>

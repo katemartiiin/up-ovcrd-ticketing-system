@@ -84,9 +84,23 @@ export default function useResearch() {
                 })
     }
 
+    const toggle = async (researchId) => {
+        await axios.patch(route('admin.research.toggle', researchId))
+                .then((response) => {
+                    toast.success(response.data.message, {
+                        timeout: 2000
+                    })
+                }).catch((error) => {
+                    toast.error(error.response.data.message, {
+                        timeout: 2000
+                    })
+                })
+    }
+
     return {
         fetch,
         store,
+        toggle,
         errors,
         update,
         fetchStaffs,

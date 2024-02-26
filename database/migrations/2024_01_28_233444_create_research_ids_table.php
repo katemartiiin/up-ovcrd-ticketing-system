@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('research_ids', function (Blueprint $table) {
             $table->id();
             $table->foreignId('office_id')->references('id')->on('offices');
+            $table->foreignId('client_id')->references('id')->on('users');
             $table->string('research_code')->unique();
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
