@@ -380,7 +380,7 @@ export default {
                         <!-- Table items -->
                         <template v-if="tickets.length">
                             <div v-for="(item, index) in tickets" :key="index">
-                                <div class="w-full bg-white rounded-md px-5 py-3 shadow my-3" :class="item.ticketDue >= 3 ? 'border-2 border-up-maroon' : ''">
+                                <div class="w-full bg-white rounded-md px-5 py-3 shadow my-3" :class="item.ticketDue == 1 ? 'border-2 border-up-maroon' : ''">
                                     <div class="w-full flex grid grid-cols-6 gap-2">
                                         <template v-for="(header, key) in headers" :key="key">
                                             <span v-if="header['value'] != 'action'" >{{ item[header['value']] }}</span>

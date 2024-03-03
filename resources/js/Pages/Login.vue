@@ -8,6 +8,12 @@ defineProps({
     status: {
         type: String,
     },
+    title: {
+        type: String,
+    },
+    subtitle: {
+        type: String,
+    },
 });
 
 </script>
@@ -16,12 +22,10 @@ defineProps({
     <GuestLayout>
         <Head title="Login" />
         <div class="bg-white mt-6 p-6 shadow-md overflow-hidden sm:rounded-lg md:mx-0 mx-5 rounded-lg">
-            <h1 class="text-center text-3xl font-bold text-up-green mb-5">System Name</h1>
+            <h1 class="text-center text-3xl font-bold text-up-green mb-5">{{ title }}</h1>
 
             <p class="px-3 pb-3">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap 
-                into electronic typesetting, remaining essentially unchanged.
+                {{ subtitle }}
             </p>
 
             <div v-if="status" class="px-3 my-3 font-medium text-sm text-red-600">

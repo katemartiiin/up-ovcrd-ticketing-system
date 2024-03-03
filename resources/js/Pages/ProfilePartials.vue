@@ -66,7 +66,7 @@ export default {
 
                         <div class="mt-6 space-y-6">
                             <div class="w-full flex items items-center justify-center">
-                                <img :src="form.avatar" class="w-48 rounded-full border-4 border-gray-300" />
+                                <img :src="form.avatar" class="w-28 rounded-full border-4 border-gray-300" />
                                 <input type="file" ref="avatar" @change="handleAvatarUpload" class="mx-5 text-sm" accept=".jpg, .jpeg, .png" />
                             </div>
                             <div class="w-full flex grid grid-cols-1 md:grid-cols-2 gap-2">

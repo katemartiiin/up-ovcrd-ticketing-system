@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ResearchIdController;
 use App\Http\Controllers\Admin\GeneralController;
 use App\Http\Controllers\Admin\OfficeController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\SettingsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +67,13 @@ Route::middleware(['auth:admin', 'verified'])->group(function() {
     Route::controller(NotificationController::class)->prefix('notifications')->name('notifications.')->group(function() {
         Route::get('/', 'index')->name('index');
         Route::post('/fetch', 'fetch')->name('fetch');
+    });
+
+    /* Settings Management Routes */
+    Route::controller(SettingsController::class)->prefix('settings')->name('settings.')->group(function() {
+        Route::get('/', 'index')->name('index');
+        Route::get('/fetch', 'fetch')->name('fetch');
+        Route::post('/update', 'update')->name('update');
     });
 
 });

@@ -32,7 +32,7 @@ import {
         faPencil,
         faRecycle,
         faSignOut, 
-        faTachometer, faTag, faTicket, faTrash,
+        faTachometer, faTag, faTicket, faTools, faTrash,
         faUsers, faUserPlus,
         faWindowRestore,  
     } from '@fortawesome/free-solid-svg-icons'
@@ -51,7 +51,7 @@ library.add(
         faPencil,
         faRecycle,
         faSignOut, 
-        faTachometer, faTag, faTicket, faTrash,
+        faTachometer, faTag, faTicket, faTools, faTrash,
         faUsers, faUserPlus, faWindowRestore 
     )
 

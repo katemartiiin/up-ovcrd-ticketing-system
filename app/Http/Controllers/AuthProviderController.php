@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use Exception;
 
 use App\Models\ActivityLog;
+use App\Models\Setting;
 use App\Models\User;
 
 use App\Providers\RouteServiceProvider;
@@ -20,8 +20,13 @@ class AuthProviderController extends Controller
 {
     public function login()
     {
+        $title = Setting::where('name', 'system_title')->first();
+        $subtitle = Setting::where('name', 'system_subtitle')->first();
+
         return Inertia::render('Login', [
-            'status' => session('status')
+            'status' => session('status'),
+            'title' => $title->value,
+            'subtitle' => $subtitle->value
         ]);
     }
 

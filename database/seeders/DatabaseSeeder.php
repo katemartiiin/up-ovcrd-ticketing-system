@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
             // AdminSeeder::class,
             // ResearchIdSeeder::class,
+            SettingsSeeder::class,
         ]);
     }
 }

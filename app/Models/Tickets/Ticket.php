@@ -12,6 +12,7 @@ use App\Models\Office;
 use App\Models\User;
 use App\Models\Processes\Process;
 use App\Models\ResearchIds\ResearchId;
+use App\Models\Setting;
 
 class Ticket extends Model
 {
@@ -107,11 +108,14 @@ class Ticket extends Model
 
     public function getTicketDueAttribute()
     {
+        $ticketDue = Setting::where('name', 'ticket_due')->first()->value;
+
         $currentDate = Carbon::now();
         $createdDate = Carbon::parse($this->updated_at);
         $duration = $currentDate->diffInDays($createdDate);
 
-        return $duration;
+        $isDue = $duration >= (int) $ticketDue ? 1  : 0;
+        return $isDue;
     }
 
     public function getResearchCodeAttribute()

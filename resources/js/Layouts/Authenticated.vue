@@ -79,6 +79,14 @@ export default {
                                 <div class="3/4">Users</div>
                             </div>
                         </NavLink>
+                        <NavLink :href="route('admin.settings.index')" :active="route().current('admin.settings.index')">
+                            <div class="w-full flex">
+                                <div class="w-1/4">
+                                    <font-awesome-icon icon="fa-solid fa-tools" />
+                                </div>
+                                <div class="3/4">Settings</div>
+                            </div>
+                        </NavLink>
                         <NavLink :href="route('admin.logout', 'admin')" :active="route().current('admin.logout')" method="post" as="button" class="px-3">
                             <div class="w-full flex">
                                 <div class="w-1/4">
@@ -121,6 +129,9 @@ export default {
                         </ResponsiveNavLink>
                         <ResponsiveNavLink :href="route('admin.users.index')" :active="route().current('admin.users.index') || route().current('admin.users.create') || route().current('admin.users.show')">
                             Users
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('admin.settings.index')" :active="route().current('admin.settings.index')">
+                            Settings
                         </ResponsiveNavLink>
                     </div>
 
