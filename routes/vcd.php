@@ -27,6 +27,7 @@ Route::middleware(['auth:vcd', 'verified'])->prefix('vcd')->group(function () {
     /* Dashboard Routes */
     Route::controller(GeneralController::class)->group(function() {
         Route::get('/dashboard', 'dashboardPage')->name('dashboard');
+        Route::get('/about', 'aboutPage')->name('about');
         Route::post('/charts', 'fetchCharts')->name('charts');
         Route::post('/charts/filter', 'filter')->name('charts.filter');
     });

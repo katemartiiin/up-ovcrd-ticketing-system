@@ -29,6 +29,9 @@ Route::middleware(['auth:admin', 'verified'])->group(function() {
     /* Dashboard Routes */
     Route::get('/dashboard', [GeneralController::class, 'dashboardPage'])->name('dashboard');
 
+    /* About Page */
+    Route::post('/about', [GeneralController::class, 'aboutPage'])->name('about');
+
     /* Research Id Management Routes */
     Route::controller(ResearchIdController::class)->prefix('research')->name('research.')->group(function() {
         Route::get('/', 'index')->name('index');

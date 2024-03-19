@@ -63,6 +63,14 @@ export default {
                                 <div class="3/4">Tickets</div>
                             </div>
                         </NavLink>
+                        <NavLink :href="route('staff.about')" :active="route().current('staff.about')" method="post" as="button">
+                            <div class="w-full flex">
+                                <div class="w-1/4">
+                                    <font-awesome-icon icon="fa-solid fa-info-circle" />
+                                </div>
+                                <div class="3/4">About</div>
+                            </div>
+                        </NavLink>
                         <NavLink :href="route('admin.logout', 'staff')" method="post" as="button" class="px-3">
                             <div class="w-full flex">
                                 <div class="w-1/4">
