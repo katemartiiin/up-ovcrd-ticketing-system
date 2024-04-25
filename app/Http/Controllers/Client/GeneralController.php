@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Application;
 
 use Inertia\Inertia;
@@ -26,6 +27,13 @@ class GeneralController extends Controller
     public function dashboardPage()
     {
         return Inertia::render('Client/Dashboard');
+    }
+
+    // About Page
+    public function aboutPage()
+    {
+        $pdf = Storage::url('manuals/client-manual.pdf');
+        return $pdf->stream();
     }
     
 }

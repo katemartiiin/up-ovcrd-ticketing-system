@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Vcd;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Application;
 
 use Carbon\Carbon;
@@ -158,6 +159,13 @@ class GeneralController extends Controller
             'barData' => $barData,
             'pieData' => $pieData,
         ]);
+    }
+
+    // About Page
+    public function aboutPage()
+    {
+        $pdf = Storage::url('manuals/client-manual.pdf');
+        return $pdf->stream();
     }
     
 }

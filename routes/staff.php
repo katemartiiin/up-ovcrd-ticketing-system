@@ -26,6 +26,9 @@ Route::middleware(['auth:staff', 'verified'])->prefix('staff')->group(function (
     /* Dashboard Routes */
     Route::get('/dashboard', [GeneralController::class, 'dashboardPage'])->name('dashboard');
 
+    /* About Page */
+    Route::get('/about', [GeneralController::class, 'aboutPage'])->name('about');
+
     /* Ticket Management Routes */
     Route::controller(TicketController::class)->prefix('tickets')->name('tickets.')->group(function() {
         Route::get('/', 'index')->name('index');

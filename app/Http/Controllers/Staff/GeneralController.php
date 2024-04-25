@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Staff;
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Application;
 
 use Inertia\Inertia;
@@ -36,6 +37,13 @@ class GeneralController extends Controller
             'activities' => $activities,
             'notifications' => $notifications
         ]);
+    }
+
+    // About Page
+    public function aboutPage()
+    {
+        $pdf = Storage::url('manuals/client-manual.pdf');
+        return $pdf->stream();
     }
     
 }
