@@ -4,11 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Storage;
 
 use Inertia\Inertia;
 
-use App\Models\Users\Admin;
 use App\Models\ActivityLog;
 use App\Models\Notification;
 
@@ -30,20 +28,13 @@ class GeneralController extends Controller
     // Go to Dashboard
     public function dashboardPage()
     {
-        $activities = ActivityLog::where('user_id', auth()->user()->id)->where('type', Admin::class)->orderBy('created_at', 'desc')->limit(10)->get();
-        $notifications = Notification::where('resource_id', auth()->user()->id)->where('type', Admin::class)->orderBy('created_at', 'desc')->limit(10)->get();
+        $activities = ActivityLog::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->limit(10)->get();
+        $notifications = Notification::where('resource_id', auth()->user()->id)->orderBy('created_at', 'desc')->limit(10)->get();
 
         return Inertia::render('Admin/Dashboard', [
             'activities' => $activities,
             'notifications' => $notifications
         ]);
-    }
-
-    // About Page
-    public function aboutPage()
-    {
-        $pdf = Storage::url('manuals/client-manual.pdf');
-        return $pdf->stream();
     }
     
 }

@@ -160,12 +160,5 @@ class GeneralController extends Controller
             'pieData' => $pieData,
         ]);
     }
-
-    // About Page
-    public function aboutPage()
-    {
-        $pdf = Storage::url('manuals/client-manual.pdf');
-        return $pdf->stream();
-    }
     
 }

@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Client;
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Application;
 
 use Inertia\Inertia;
 
 use App\Http\Controllers\Controller;
+use App\Models\ActivityLog;
+use App\Models\Notification;
 
 class GeneralController extends Controller
 {
@@ -26,14 +27,13 @@ class GeneralController extends Controller
     // Go to Dashboard
     public function dashboardPage()
     {
-        return Inertia::render('Client/Dashboard');
-    }
+        $notifications = Notification::where('resource_id', auth()->user()->id)->orderBy('created_at', 'desc')->limit(10)->get();
+        $activities = ActivityLog::where('resource_id', auth()->user()->id)->orderBy('created_at', 'desc')->limit(10)->get();
 
-    // About Page
-    public function aboutPage()
-    {
-        $pdf = Storage::url('manuals/client-manual.pdf');
-        return $pdf->stream();
+        return Inertia::render('Client/Dashboard', [
+            'notifications' => $notifications,
+            'activities' => $activities
+        ]);
     }
     
 }

@@ -23,8 +23,6 @@ Route::middleware(['auth', 'verified'])->group(function() {
 
     /* Dashboard Routes */
     Route::get('/dashboard', [GeneralController::class, 'dashboardPage'])->name('dashboard');
-    /* About Page */
-    Route::get('/about', [GeneralController::class, 'aboutPage'])->name('about');
 
     /* Notification Management Routes */
     Route::controller(NotificationController::class)->prefix('notifications')->name('notifications.')->group(function() {
