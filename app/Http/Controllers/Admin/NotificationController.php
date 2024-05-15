@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 use App\Models\Notification;
-use App\Models\Users\Admin;
 
 use App\Http\Controllers\Controller;
 
@@ -24,7 +23,7 @@ class NotificationController extends Controller
     public function fetch(Request $request)
     {
         $options = $request->options;
-        $notifications = Notification::where('type', Admin::class)->where('resource_id', auth()->user()->id)->paginate($options['rowsPerPage'], ['*'], 'page', $options['page']);
+        $notifications = Notification::where('resource_id', auth()->user()->id)->paginate($options['rowsPerPage'], ['*'], 'page', $options['page']);
 
         return response()->json([
             'items' => $notifications

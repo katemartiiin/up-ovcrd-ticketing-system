@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             // AdminSeeder::class,
             // ResearchIdSeeder::class,
             SettingsSeeder::class,
+            ClientRPSeeder::class,
         ]);
     }
 }

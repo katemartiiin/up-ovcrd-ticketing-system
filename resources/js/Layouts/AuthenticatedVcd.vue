@@ -71,6 +71,14 @@ export default {
                                 <div class="3/4">Tickets</div>
                             </div>
                         </NavLink>
+                        <a href="https://docs.google.com/presentation/d/1v9Kzvg7wny5VrGhSxHc9O3zebHUF0wbmISKuB6fS3OE/edit#slide=id.g2b835489b3a_0_45" class="w-full uppercase inline-flex items-center px-10 py-7 font-medium leading-5 text-white hover:bg-up-maroon-lighter focus:outline-none transition duration-150 ease-in-out" target="_blank">
+                            <div class="w-full flex">
+                                <div class="w-1/4">
+                                    <font-awesome-icon icon="fa-solid fa-info-circle" />
+                                </div>
+                                <div class="3/4">About</div>
+                            </div>
+                        </a>
                         <NavLink :href="route('admin.logout', 'vcd')" method="post" as="button" class="px-3">
                             <div class="w-full flex">
                                 <div class="w-1/4">

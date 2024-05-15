@@ -27,7 +27,7 @@ class TicketRequest extends FormRequest
             'office_id' => 'required',
             'title' => 'required',
             'description' => 'required',
-            'files.*' => 'nullable|mimes:jpg,png,jpeg,pdf|max:20000'
+            'files.*' => 'nullable|mimes:jpg,png,jpeg,pdf|max:10240'
         ];
     }
 

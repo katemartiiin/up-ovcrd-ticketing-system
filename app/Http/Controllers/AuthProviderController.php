@@ -9,12 +9,13 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
+use Spatie\Permission\Models\Role;
+
 use App\Models\ActivityLog;
 use App\Models\Setting;
 use App\Models\User;
 
 use App\Providers\RouteServiceProvider;
-
 
 class AuthProviderController extends Controller
 {
@@ -122,6 +123,10 @@ class AuthProviderController extends Controller
                 'google_avatar' => $googleUser->avatar,
                 'role' => User::ROLE_CLIENT
             ]);
+
+            $role = Role::where('name', 'Client')->first();
+            $user->syncRoles($role);
+            $user->syncPermissions($role->permissions);
 
             Auth::guard('web')->login($user);
             $route = RouteServiceProvider::HOME;
