@@ -81,7 +81,7 @@ export default {
                                 <ErrorText v-if="errors.email" :message="errors.email[0]" />
                             </div>
                             <div class="w-full md:w-1/2 py-3 md:py-0 md:px-2">
-                                <label class="block text-up-green font-semibold mb-2">Section <span class="text-red-500 text-sm">*</span></label>
+                                <label class="block text-up-green font-semibold mb-2">Section</label>
                                 <select v-model="payload.office_id" id="offices" class="bg-gray-50 border border-gray-300 text-sm text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2">
                                     <option disabled selected value="">Select section</option>
                                     <template v-for="office in offices" :key="office.id">

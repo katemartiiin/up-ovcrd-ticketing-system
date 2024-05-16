@@ -69,7 +69,7 @@ export default {
                                 <input v-model="user.email" type="email" class="w-full border-gray-300 rounded-md mr-1" placeholder="email@upd.edu.ph">
                             </div>
                             <div class="w-full md:w-1/2 py-3 md:py-0 md:px-2">
-                                <label class="block text-up-green font-semibold mb-2">Section <span class="text-red-500 text-sm">*</span></label>
+                                <label class="block text-up-green font-semibold mb-2">Section</label>
                                 <select v-model="user.office_id" id="offices" class="bg-gray-50 border border-gray-300 text-sm text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2">
                                     <option disabled selected value="">Select section</option>
                                     <option v-for="office in offices" :key="office.id" :value="office.id">{{ office.short_code }}</option>

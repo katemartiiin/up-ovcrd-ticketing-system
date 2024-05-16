@@ -31,7 +31,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $offices = Office::with('processes')->get();
+        $offices = Office::where('id', '!=', 1)->with('processes')->get();
         $researchIds = ResearchId::with('office.processes')->where('client_id', auth()->user()->id)->where('status', ResearchId::STATUS_ACTIVE)->get();
 
         return Inertia::render('Client/Tickets/Index', [

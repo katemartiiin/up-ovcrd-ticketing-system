@@ -14,6 +14,12 @@ class OfficeSeeder extends Seeder
     public function run(): void
     {
         Office::create([
+            'name' => 'Clients',
+            'short_code' => 'Clients',
+            'status' => 1
+        ]);
+
+        Office::create([
             'name' => 'Research Management Office',
             'short_code' => 'RMO',
             'status' => 1

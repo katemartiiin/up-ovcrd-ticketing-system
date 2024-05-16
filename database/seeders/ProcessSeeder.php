@@ -14,25 +14,25 @@ class ProcessSeeder extends Seeder
     public function run(): void
     {
         Process::create([
-            'office_id' => 1,
+            'office_id' => 2,
             'name' => 'RMO Ticket Transfer',
             'description' => 'Transferring ticket'
         ]);
         
         Process::create([
-            'office_id' => 1,
+            'office_id' => 2,
             'name' => 'Request for Realignment',
             'description' => 'Requesting for realignment meeting'
         ]);
 
         Process::create([
-            'office_id' => 2,
+            'office_id' => 3,
             'name' => 'Admin Ticket Transfer',
             'description' => 'Transferring ticket'
         ]);
         
         Process::create([
-            'office_id' => 2,
+            'office_id' => 3,
             'name' => 'Request for System Update',
             'description' => 'Requesting for system update'
         ]);

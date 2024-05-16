@@ -172,12 +172,13 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $admin = User::findOrFail($id);
+        $officeId = $request->role == User::ROLE_CLIENT ? 1 : $request->office_id;
         $admin->update([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
             'name' => $request->first_name . ' ' . $request->last_name,
-            'office_id' => $request->office_id,
+            'office_id' => $officeId,
             'role' => $request->role
         ]);
 

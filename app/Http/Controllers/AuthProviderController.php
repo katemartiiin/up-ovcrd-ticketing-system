@@ -121,7 +121,8 @@ class AuthProviderController extends Controller
                 'google_id' => $googleUser->id,
                 'google_token' => $googleUser->token,
                 'google_avatar' => $googleUser->avatar,
-                'role' => User::ROLE_CLIENT
+                'role' => User::ROLE_CLIENT,
+                'office_id' => 1 // set client section as default
             ]);
 
             $role = Role::where('name', 'Client')->first();

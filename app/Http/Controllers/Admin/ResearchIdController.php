@@ -22,7 +22,7 @@ class ResearchIdController extends Controller
      */
     public function index()
     {
-        $offices = Office::all();
+        $offices = Office::where('id', '!=', 1)->get(); // Get all sections except client
         $clients = User::where('role', User::ROLE_CLIENT)->where('status', User::STATUS_ACTIVE)->get();
 
         return Inertia::render('Admin/Research', [

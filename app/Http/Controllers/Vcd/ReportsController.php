@@ -25,7 +25,7 @@ class ReportsController extends Controller
      */
     public function index()
     {
-        $offices = Office::with('processes')->get();
+        $offices = Office::where('id', '!=', 1)->with('processes')->get();
         $researchIds = ResearchId::all();
 
         // Check role if admin is director or vc

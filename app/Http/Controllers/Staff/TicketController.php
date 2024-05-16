@@ -34,7 +34,7 @@ class TicketController extends Controller
         $officeId = auth()->user()->office_id;
 
         $office = Office::with('processes')->findOrFail($officeId);
-        $offices = Office::where('id', '!=', $officeId)->get();
+        $offices = Office::whereIn('id', '!=', [1, $officeId])->get();
 
         return Inertia::render('Staff/Tickets/Index', [
             'office' => $office,
@@ -116,8 +116,7 @@ class TicketController extends Controller
         // Get user office id
         $officeId = auth()->user()->office_id;
 
-        $office = Office::with('processes')->findOrFail($officeId);
-        $offices = Office::where('id', '!=', $officeId)->get();
+        $offices = Office::whereIn('id', '!=', [1, $officeId])->get();
         
         $ticket = Ticket::with('process', 'office', 'files', 'notes')->findOrFail($id);
         $logs = TicketLog::where('ticket_id', $id)->orderBy('created_at', 'desc')->get();

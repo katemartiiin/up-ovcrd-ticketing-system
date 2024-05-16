@@ -32,6 +32,7 @@ class SuperAdminCommand extends Command
         $sa = User::findOrFail(1);
 
         $sa->role = User::ROLE_ADMIN;
+        $sa->office_id = null;
         $sa->save();
         
         $sa->assignRole($superAdmin);
