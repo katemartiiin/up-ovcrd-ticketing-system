@@ -31,7 +31,7 @@ class TicketController extends Controller
         $officeId = auth()->user()->office_id;
 
         $office = Office::with('processes')->findOrFail($officeId);
-        $offices = Office::whereIn('id', '!=', [1, $officeId])->get();
+        $offices = Office::where('id', '!=', 1)->where('id', '!=', $officeId)->get();
 
         $staffs = User::where('office_id', $officeId)->where('role', User::ROLE_STAFF)->get();
 
@@ -108,7 +108,7 @@ class TicketController extends Controller
         // Get user office id
         $officeId = auth()->user()->office_id;
 
-        $offices = Office::whereIn('id', '!=', [1, $officeId])->get();
+        $offices = Office::where('id', '!=', 1)->where('id', '!=', $officeId)->get();
         
         $ticket = Ticket::with('process', 'office', 'files', 'notes')->findOrFail($id);
         $logs = TicketLog::where('ticket_id', $id)->orderBy('created_at', 'desc')->get();
