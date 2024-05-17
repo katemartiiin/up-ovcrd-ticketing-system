@@ -169,6 +169,7 @@ export default {
             processes,
             showNotes,
             toggleTabs,
+            addingNote,
             toggleNotes,
             claimTicket,
             payloadNote,
